@@ -15,7 +15,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::paginate(5);
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -26,6 +27,7 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
+        return view('posts.create');
     }
 
     /**
@@ -58,7 +60,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('posts.edit');
     }
 
     /**
