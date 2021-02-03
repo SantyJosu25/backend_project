@@ -1,10 +1,9 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ route('home') }}">Inicio</a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <a style="color: aliceblue" class="navbar-brand js-scroll-trigger" href="{{ route('home') }}">Inicio</a>
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
+                    <a style="color: aliceblue" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Categorias
                     </a>
@@ -15,7 +14,7 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
+                    <a style="color: aliceblue" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Posts
                     </a>
@@ -25,6 +24,11 @@
                     </ul>
                 </li>
             </ul>
-        </div>
     </div>
 </nav>
+<style>
+    nav{
+        padding: 25px 50px 75px;
+        background: linear-gradient(#555353,#494848d2);
+    }
+</style>
