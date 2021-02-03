@@ -1,6 +1,6 @@
 @extends('base')
 @section('title')
-    Lista de Categorias
+    Lista de Categorías
 @endsection
 @section('content')
     @if (session('info'))
@@ -10,7 +10,7 @@
         </div>
     @endif
 
-    <h1 style="text-align: center">Lista de Categorias</h1>
+    <h1 style="text-align: center">Lista de Categorías</h1>
 
     <div class="card">
         <div class="card-header">
@@ -37,7 +37,7 @@
                 <tbody>
                     @if (count($categories) >= 1)
                 @foreach ($categories as $category)
-                            <tr>
+                <tr class="align-middle">
                                 <td scope="row">{{ $loop->iteration }}</td>
                                 <td>{{ $category->name }}</td>
                                 <td>{{ $category->description }}</td>

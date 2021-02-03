@@ -1,10 +1,10 @@
 @extends('base')
 @section('title')
-    Creación de Categoria
+    Creación de Categoría
 @endsection
 @section('content')
 
-    <h1 style="text-align: center">Creación de Categoria</h1>
+    <h1 style="text-align: center">Creación de Categoría</h1>
 
     <div class="card">
         <div class="card-body">

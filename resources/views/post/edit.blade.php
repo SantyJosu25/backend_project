@@ -32,9 +32,9 @@
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="image" class="form-label">Imagen</label>
-                    <input type="image" class="form-control" id="image" name="image" value="{{ $post->image }}">
-                    </td>
+                    <label for="image" class="form-label">Imagen</label><br>
+                    <img src="{{ asset('storage') . '/' . $post->image }}" alt="imagen post" width="200"><br>
+                    <input type="file" id="image" name="image">
                 </div>
                 <div class="mb-3">
                     <label for="summary" class="form-label">Resumen</label>

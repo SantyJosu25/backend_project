@@ -38,7 +38,7 @@
                 <tbody>
                     @if (count($posts) >= 1)
                         @foreach ($posts as $post)
-                            <tr>
+                            <tr class="align-middle">
                                 <td scope="row">{{ $loop->iteration }}</td>
                                 <td scope="row">
                                     <img src="{{ asset('storage') . '/' . $post->image }}" alt="imagen post" width="100">

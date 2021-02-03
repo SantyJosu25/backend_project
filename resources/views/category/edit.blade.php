@@ -1,6 +1,6 @@
 @extends('base')
 @section('title')
-    Editar Categoria
+    Editar Categoría
 @endsection
 @section('content')
     @if (session('info'))
@@ -10,7 +10,7 @@
         </div>
     @endif
 
-    <h1 style="text-align: center">Editar Categoria</h1>
+    <h1 style="text-align: center">Editar Categoría</h1>
 
     <div class="card">
         <div class="card-body">
@@ -22,7 +22,7 @@
                     <input type="text" class="form-control" id="name" name="name" value="{{ $category->name }}">
                 </div>
                 <div class="mb-3">
-                    <label for="description" class="form-label">descripción</label>
+                    <label for="description" class="form-label">Descripción</label>
                     <textarea name="description" id="description" class="form-control" cols="30"
                         rows="10">{{ $category->description }}</textarea>
                 </div>

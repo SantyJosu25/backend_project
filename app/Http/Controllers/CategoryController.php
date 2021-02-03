@@ -24,7 +24,7 @@ class CategoryController extends Controller
         //$data = $request->all();
         $data = $request->input('search');
         $query = Category::select()
-            ->where('name','like',"%$data%")
+            ->where('name', 'like', "%$data%")
             ->get();
 
         return view("category.index")->with(["categories" => $query]);
@@ -53,7 +53,7 @@ class CategoryController extends Controller
         $data = $request->except('_token');
         Category::insert($data);
         Session::flash('alert-success', 'Se ha Creado la Categorías con éxito!');
-        return redirect()->route("category.index");
+        return redirect()->route("category.index")->with('info', 'La categoría se creó correctamente');
     }
 
     /**
@@ -89,10 +89,10 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-         //$data = $request->all();
-         $data = $request->except('_token','_method');
-         Category::where('id','=', $id)->update($data);
-         return redirect()->route("category.index");
+        //$data = $request->all();
+        $data = $request->except('_token', '_method');
+        Category::where('id', '=', $id)->update($data);
+        return redirect()->route("category.index")->with('info', 'La categoría se actulizó correctamente');
     }
 
     /**
@@ -104,6 +104,6 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         Category::destroy($id);
-        return redirect()->route("category.index");
+        return redirect()->route("category.index")->with('info', 'La categoría se eliminó correctamente');
     }
 }

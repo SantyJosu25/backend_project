@@ -1,10 +1,10 @@
 @extends('base')
 @section('title')
-    Vista de la Categoria
+    Vista de la Categoría
 @endsection
 @section('content')
 
-    <h1 style="text-align: center">Vista de la Categoria</h1>
+    <h1 style="text-align: center">Vista de la Categoría</h1>
 
     <div class="card">
         <div class="card-body">

@@ -26,9 +26,9 @@ class PostController extends Controller
         $data = $request->input('search');
         $query = Post::select()
             ->join('categories as cat', 'posts.category_id', '=', 'cat.id')
-            ->where('title','like',"%$data%")
-            ->orWhere('author','like',"%$data%")
-            ->orWhere('cat.name','like',"%$data%")
+            ->where('title', 'like', "%$data%")
+            ->orWhere('author', 'like', "%$data%")
+            ->orWhere('cat.name', 'like', "%$data%")
             ->get();
 
         return view("post.index")->with(["posts" => $query]);
@@ -57,10 +57,10 @@ class PostController extends Controller
         //$data = $request->all();
         $data = $request->except('_token');
         if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('uploads','public');
+            $data['image'] = $request->file('image')->store('uploads', 'public');
         }
         Post::insert($data);
-        return redirect()->route("post.index");
+        return redirect()->route("post.index")->with('info', 'El post se creó correctamente');
     }
 
     /**
@@ -97,15 +97,17 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-         //$data = $request->all();
-         $data = $request->except('_token','_method');
-         if ($request->hasFile('image')) {
+        //$data = $request->all();
+        $data = $request->except('_token', '_method');
+        if ($request->hasFile('image')) {
             $post = Post::findOrFail($id);
-            Storage::delete("public/$post->image");
-            $data['image'] = $request->file('image')->store('uploads','public');
-         }
-         Post::where('id','=', $id)->update($data);
-         return redirect()->route("post.index");
+            Storage::delete('public/'.$post->image);
+            $data['image'] = $request->file('image')->store('uploads', 'public');
+        }
+        Post::where('id', '=', $id)->update($data);
+
+        $post=Post::findOrFail($id);
+        return redirect()->route("post.show", compact('post'))->with('info', 'El post se actulizó correctamente');
     }
 
     /**
@@ -117,6 +119,6 @@ class PostController extends Controller
     public function destroy($id)
     {
         Post::destroy($id);
-        return redirect()->route("post.index");
+        return redirect()->route("post.index")->with('info', 'El post se eliminó correctamente');
     }
 }

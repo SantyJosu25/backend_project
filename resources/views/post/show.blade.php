@@ -3,6 +3,12 @@
     Vista del Post
 @endsection
 @section('content')
+@if (session('info'))
+<div class="alert alert-success alert-dismissible fade show">
+    <strong>{{ session('info') }}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 
     <h1 style="text-align: center">Vista del Post</h1>
 
@@ -16,8 +22,9 @@
                     <input type="text" class="form-control" id="title" name="title" value="{{ $post->title }}" disabled>
                 </div>
                 <div class="mb-3">
-                    <label for="image" class="form-label">Imagen</label>
-                    <input type="file" class="form-control" id="image" name="image" value="{{ $post->image }}" disabled>
+                    <label for="image" class="form-label">Imagen</label><br>
+                    <img src="{{ asset('storage') . '/' . $post->image }}" alt="imagen post" width="200"><br>
+                    <input type="file" id="image" name="image"disabled>
                 </div>
                 <div class="mb-3">
                     <label for="summary" class="form-label">Resumen</label>
