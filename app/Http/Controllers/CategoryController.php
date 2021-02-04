@@ -21,7 +21,6 @@ class CategoryController extends Controller
 
     public function search(Request $request)
     {
-        //$data = $request->all();
         $data = $request->input('search');
         $query = Category::select()
             ->where('name', 'like', "%$data%")
@@ -52,7 +51,6 @@ class CategoryController extends Controller
         //$data = $request->all();
         $data = $request->except('_token');
         Category::insert($data);
-        Session::flash('alert-success', 'Se ha Creado la Categorías con éxito!');
         return redirect()->route("category.index")->with('info', 'La categoría se creó correctamente');
     }
 
@@ -105,5 +103,18 @@ class CategoryController extends Controller
     {
         Category::destroy($id);
         return redirect()->route("category.index")->with('info', 'La categoría se eliminó correctamente');
+    }
+
+    public function list()
+    {
+        $data = Category::all();
+        return response()->json($data, 201);
+    }
+
+    public function save(Request $request)
+    {
+        $data = $request->all();
+        Category::insert($data);
+        return response()->json("La información se guardo con exito", 201);
     }
 }
