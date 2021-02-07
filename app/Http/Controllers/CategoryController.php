@@ -15,8 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data['categories'] = Category::paginate(5);
-        return view("category.index", $data);
+        $categories = Category::latest('id')->paginate(5);
+        return view("category.index", compact('categories'));
     }
 
     public function search(Request $request)
@@ -37,7 +37,7 @@ class CategoryController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view("category.create")->with(["categories" => $categories]);
+        return view("category.create", compact('categories'));
     }
 
     /**

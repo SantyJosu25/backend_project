@@ -16,8 +16,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $data['posts'] = Post::paginate(5);
-        return view("post.index", $data);
+        $posts = Post::latest('id')->paginate(5);
+        return view("post.index", compact('posts'));
     }
 
     public function search(Request $request)
@@ -43,7 +43,7 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view("post.create")->with(["categories" => $categories]);
+        return view("post.create", compact('categories'));
     }
 
     /**
@@ -72,7 +72,8 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
-        return view('post.show', compact('post'));
+        $categories = Category::all();
+        return view('post.show', compact('post', 'categories'));
     }
 
     /**

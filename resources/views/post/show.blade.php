@@ -21,6 +21,16 @@
                     <label for="title" class="form-label">Titulo</label>
                     <input type="text" class="form-control" id="title" name="title" value="{{ $post->title }}" disabled>
                 </div>
+                <div class="form-group has-feedback">
+                    <label class="form-label">Categoria</label>
+                    <select name="category_id" class="form-select" required>
+                        <option value="" disabled>Seleccione la Categoria</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}" selected="{{ $post->category_id == $category->id }}" disabled>
+                                {{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="mb-3">
                     <label for="image" class="form-label">Imagen</label><br>
                     <img src="{{ asset('storage') . '/' . $post->image }}" alt="imagen post" width="200"><br>
