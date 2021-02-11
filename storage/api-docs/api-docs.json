@@ -1,0 +1,57 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Contact",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://backend_project.test"
+        }
+    ],
+    "paths": {
+        "/api/contact/insertar": {
+            "post": {
+                "summary": "Guardar datos de contacto",
+                "operationId": "App\\Http\\Controllers\\ContactController::insertar",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "type": "string"
+                                    },
+                                    "message": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Santiago Anrango",
+                                    "email": "santy2516@gmail.com",
+                                    "phone": "+593 98 786 6683",
+                                    "message": "Test de envio de email"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
